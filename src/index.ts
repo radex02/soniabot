@@ -7,7 +7,7 @@ const app = new Hono();
 
 app.get("/register", registerCommands);
 
-app.use("/", signatureMiddleware());
+app.use("/", signatureMiddleware);
 app.post("/", discordInteraction);
 
 // noinspection JSUnusedGlobalSymbols
