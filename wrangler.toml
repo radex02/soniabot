@@ -1,2 +1,8 @@
 name = "soniabot"
 compatibility_date = "2023-01-01"
+
+[vars]
+# needed secrets:
+# - DISCORD_PUBLIC_KEY
+# - DISCORD_TOKEN
+# - DISCORD_APPLICATION_ID
