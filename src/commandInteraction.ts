@@ -1,6 +1,6 @@
 import { DiscordInteraction, InteractionHandler } from "./types";
 import { COMMAND_LIST } from "./conf";
-import { HTTPException } from "hono/dist/types/http-exception";
+import { HTTPException } from "hono/http-exception";
 
 const commandInteraction: InteractionHandler = async (
   interaction: DiscordInteraction
