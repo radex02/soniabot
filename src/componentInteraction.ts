@@ -1,8 +1,8 @@
 import { InteractionHandler } from "./types";
 import { HTTPException } from "hono/http-exception";
-import quizAnswer from "./componentInteractions/quizAnswer";
+import quizAnswer from "./components/quizAnswer";
 
-export const componentInteraction: InteractionHandler = async (interaction) => {
+const componentInteraction: InteractionHandler = async (interaction) => {
   if (!interaction.data) throw new HTTPException(400);
 
   if (interaction.data.custom_id?.startsWith("ans-")) {
@@ -11,3 +11,5 @@ export const componentInteraction: InteractionHandler = async (interaction) => {
     throw new HTTPException(400);
   }
 };
+
+export default componentInteraction;

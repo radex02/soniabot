@@ -1,9 +1,10 @@
 import { Context } from "hono";
-import { DiscordInteraction, InteractionResponse } from "./types";
-import { InteractionResponseType, InteractionType } from "discord-interactions";
+import { DiscordInteraction } from "./types";
+import { InteractionType } from "discord-interactions";
 import { HTTPException } from "hono/http-exception";
-import { COMMAND_LIST } from "./conf";
-import { componentInteraction } from "./componentInteraction";
+import componentInteraction from "./componentInteraction";
+import commandInteraction from "./commandInteraction";
+import pingInteraction from "./pingInteraction";
 
 export const discordInteraction = async (c: Context) => {
   let interaction: DiscordInteraction;
@@ -16,26 +17,18 @@ export const discordInteraction = async (c: Context) => {
 
   switch (interaction.type) {
     case InteractionType.PING: {
-      return pingInteraction(c);
+      return c.json(await pingInteraction(interaction));
     }
     case InteractionType.APPLICATION_COMMAND: {
-      const commandName = interaction.data?.name.toLowerCase();
-      const command = COMMAND_LIST.find(
-        (cmd) => cmd.manifest.name === commandName
-      );
-
-      if (command) return c.json(await command.execute(interaction));
-      else
-        throw new HTTPException(404, {
-          message: "command not found",
-        });
+      return c.json(await commandInteraction(interaction));
     }
     case InteractionType.MESSAGE_COMPONENT: {
       return c.json(await componentInteraction(interaction));
     }
+    default: {
+      throw new HTTPException(400, {
+        message: "interaction type not implemented",
+      });
+    }
   }
-};
-
-const pingInteraction = async (c: Context) => {
-  return c.json<InteractionResponse>({ type: InteractionResponseType.PONG });
 };
