@@ -14,7 +14,7 @@ export const signatureMiddleware = async (c: Context, next: () => void) => {
     rawBody,
     signature,
     timestamp,
-    c.env.DISCORD_PUBLIC_KEY
+    DISCORD_PUBLIC_KEY
   );
 
   if (isValidRequest) {

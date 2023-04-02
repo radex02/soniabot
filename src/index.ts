@@ -10,5 +10,4 @@ app.get("/register", registerCommands);
 app.use("/", signatureMiddleware);
 app.post("/", discordInteraction);
 
-// noinspection JSUnusedGlobalSymbols
-export default app;
+app.fire();
