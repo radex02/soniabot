@@ -1,5 +1,5 @@
 import { decode } from "html-entities";
-import { DiscordMessage } from "./types";
+import { DiscordCommandOptionsResponse, DiscordMessage } from "./types";
 
 export const shuffle = (source: any[]): any[] =>
   source
@@ -51,3 +51,8 @@ export const followUpMessageEdit = async (
     }
   );
 };
+
+export const getOptionValue = (
+  options: DiscordCommandOptionsResponse[] | undefined,
+  name: string
+) => options?.find((e) => e.name === name)?.value;

@@ -1,6 +1,7 @@
 import type { Command } from "../types";
 import { DiscordCommandOptionType } from "../types";
 import { InteractionResponseType } from "discord-interactions";
+import { getOptionValue } from "../functions";
 
 export default {
   manifest: {
@@ -17,9 +18,7 @@ export default {
   },
 
   execute: async (interaction, c) => {
-    const victim = interaction.data?.options?.find(
-      (e) => e.name === "victim"
-    )!.value;
+    const victim = getOptionValue(interaction.data?.options, "victim");
 
     const bullyUses = interaction.member
       ? `<@${interaction.member.user.id}> uses`

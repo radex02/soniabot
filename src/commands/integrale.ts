@@ -1,7 +1,7 @@
 import type { Command } from "../types";
 import { DiscordCommandOptionType } from "../types";
 import { InteractionResponseType } from "discord-interactions";
-import { fixMath } from "../functions";
+import { fixMath, getOptionValue } from "../functions";
 
 export default {
   manifest: {
@@ -18,10 +18,7 @@ export default {
   },
 
   execute: async (interaction, c) => {
-    const formulaOptions = interaction.data?.options?.find(
-      (e) => e.name === "formule"
-    );
-    const formula = formulaOptions?.value;
+    const formula = getOptionValue(interaction.data?.options, "formule");
 
     if (!formula) return;
 
