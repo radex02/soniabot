@@ -16,7 +16,7 @@ export default {
       {
         type: DiscordCommandOptionType.INTEGER,
         name: "amount",
-        description: "Number of messages to summarize (default is 10)",
+        description: "Number of messages to summarize (default is 1)",
         min_value: 1,
         max_value: 100,
       },
@@ -27,7 +27,7 @@ export default {
     if (!interaction.channel_id) throw new HTTPException(400);
     if (!NLPCLOUD_KEY) throw new HTTPException(500);
 
-    const amount = getOptionValue(interaction.data?.options, "amount") || 10;
+    const amount = getOptionValue(interaction.data?.options, "amount") || 1;
 
     const getSummary = async (
       messageList: Promise<DiscordMessage[]>
