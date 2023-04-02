@@ -41,7 +41,7 @@ export default {
       ).then((res) => res.json());
 
       const tldr = apiResponse.summary_text.replaceAll(
-        /\d{16,}/g,
+        /\d{17,}/g,
         (id) => `<@${id}>`
       );
 
