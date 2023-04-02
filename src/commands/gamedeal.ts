@@ -8,7 +8,7 @@ export default {
     description: "Good deals :thumbsup:",
   },
 
-  execute: async (interaction) => {
+  execute: async (interaction, c) => {
     const pageNumber = Math.floor(Math.random() * 25);
 
     const dealList: CheapsharkDeal[] = await fetch(

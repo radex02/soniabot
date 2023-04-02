@@ -7,7 +7,7 @@ export default {
     description: "Pro-tip",
   },
 
-  execute: async (interaction) => {
+  execute: async (interaction, c) => {
     const adviceResponse: { slip: { advice: string } } = await fetch(
       "https://api.adviceslip.com/advice"
     ).then((res) => res.json());

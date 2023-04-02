@@ -17,13 +17,13 @@ export const discordInteraction = async (c: Context) => {
 
   switch (interaction.type) {
     case InteractionType.PING: {
-      return c.json(await pingInteraction(interaction));
+      return c.json(await pingInteraction(interaction, c));
     }
     case InteractionType.APPLICATION_COMMAND: {
-      return c.json(await commandInteraction(interaction));
+      return c.json(await commandInteraction(interaction, c));
     }
     case InteractionType.MESSAGE_COMPONENT: {
-      return c.json(await componentInteraction(interaction));
+      return c.json(await componentInteraction(interaction, c));
     }
     default: {
       throw new HTTPException(400, {

@@ -16,7 +16,7 @@ export default {
     ],
   },
 
-  execute: async (interaction) => {
+  execute: async (interaction, c) => {
     const victim = interaction.data?.options?.find(
       (e) => e.name === "victim"
     )!.value;

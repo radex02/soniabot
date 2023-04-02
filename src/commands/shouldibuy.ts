@@ -17,7 +17,7 @@ export default {
     ],
   },
 
-  execute: async (interaction) => {
+  execute: async (interaction, c) => {
     const answer = pickOne([
       "no",
       "I feel like that's a bad financial decision",

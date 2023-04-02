@@ -8,7 +8,7 @@ export default {
     description: "Tell me a joke",
   },
 
-  execute: async (interaction) => {
+  execute: async (interaction, c) => {
     const joke = await fetch(
       "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&format=txt"
     ).then((res) => res.text());

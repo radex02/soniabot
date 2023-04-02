@@ -8,7 +8,7 @@ export default {
     description: "Fun fact",
   },
 
-  execute: async (interaction) => {
+  execute: async (interaction, c) => {
     const funfact: { text: string } = await fetch(
       "https://uselessfacts.jsph.pl/api/v2/facts/random"
     ).then((res) => res.json());

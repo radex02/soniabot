@@ -7,7 +7,7 @@ export default {
     description: "When is Zelda?",
   },
 
-  execute: async (interaction) => {
+  execute: async (interaction, c) => {
     const releaseDate = new Date(
       "Tue May 12 2023 00:00:00 GMT-0400 (Eastern Daylight Time)"
     );

@@ -7,7 +7,7 @@ export default {
     description: "Laugh",
   },
 
-  execute: async (interaction) => {
+  execute: async (interaction, c) => {
     const laughSize = 8 + Math.floor(Math.random() * 8);
     let laugh = "nye";
     for (let i = 0; i < laughSize; i++) {

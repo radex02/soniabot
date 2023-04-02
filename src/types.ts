@@ -1,6 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
 import { InteractionResponseType, InteractionType } from "discord-interactions";
+import { Context } from "hono";
 
 export interface Command {
   manifest: DiscordCommandRequest;
@@ -10,7 +11,7 @@ export interface Command {
 export interface DiscordMessage {
   id: string;
   channel_id: string;
-  author: Object;
+  author: DiscordUser;
   content: string;
   timestamp: string;
   edited_timestamp?: string;
@@ -188,5 +189,6 @@ export enum DiscordCommandType {
 }
 
 export type InteractionHandler = (
-  interaction: DiscordInteraction
+  interaction: DiscordInteraction,
+  c: Context
 ) => Promise<InteractionResponse>;

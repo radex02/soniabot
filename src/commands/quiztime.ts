@@ -8,7 +8,7 @@ export default {
     description: "Quiz time!",
   },
 
-  execute: async (interaction) => {
+  execute: async (interaction, c) => {
     const category = pickOne([
       17, // science and nature
       19, // science : math

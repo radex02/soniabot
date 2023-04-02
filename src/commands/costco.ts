@@ -8,7 +8,7 @@ export default {
     description: "Costco",
   },
 
-  execute: async (interaction) => {
+  execute: async (interaction, c) => {
     const image = pickOne([
       "https://media.giphy.com/media/8coEmqQxL39eMJcey0/giphy.gif",
       "https://tenor.com/view/pizza-costco-pizza-costco-welcome-to-costco-i-love-you-gif-gif-gif-25786468",

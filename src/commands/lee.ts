@@ -8,7 +8,7 @@ export default {
     description: "Rock Lee my beloved",
   },
 
-  execute: async (interaction) => {
+  execute: async (interaction, c) => {
     const quote: { quote: string } = await fetch(
       "https://animechan.vercel.app/api/random/character?name=rock%20lee&anime=naruto"
     ).then((res) => res.json());

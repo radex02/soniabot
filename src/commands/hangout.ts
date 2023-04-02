@@ -7,7 +7,7 @@ export default {
     description: "Hangout",
   },
 
-  execute: async (interaction) => {
+  execute: async (interaction, c) => {
     return {
       type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
       data: {
