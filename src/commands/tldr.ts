@@ -1,17 +1,34 @@
 import type { Command, DiscordMessage } from "../types";
+import { DiscordCommandOptionType } from "../types";
 import { InteractionResponseType } from "discord-interactions";
 import { HTTPException } from "hono/http-exception";
-import { followUpMessageEdit, getMessagesOfChannel } from "../functions";
+import {
+  followUpMessageEdit,
+  getMessagesOfChannel,
+  getOptionValue,
+} from "../functions";
 
 export default {
   manifest: {
     name: "tldr",
     description: "[BETA] summarize the last 100 messages",
+    options: [
+      {
+        type: DiscordCommandOptionType.INTEGER,
+        name: "amount",
+        description:
+          "Number of messages to summarize, starting from last (default: 10)",
+        min_value: 1,
+        max_value: 100,
+      },
+    ],
   },
 
   execute: async (interaction, c) => {
     if (!interaction.channel_id) throw new HTTPException(400);
     if (!NLPCLOUD_KEY) throw new HTTPException(500);
+
+    const amount = getOptionValue(interaction.data?.options, "amount") || 10;
 
     const getSummary = async (
       messageList: Promise<DiscordMessage[]>
@@ -52,7 +69,7 @@ export default {
 
     c.event.waitUntil(
       followUpMessageEdit(
-        getSummary(getMessagesOfChannel(interaction.channel_id, 100)),
+        getSummary(getMessagesOfChannel(interaction.channel_id, amount)),
         interaction.token
       )
     );

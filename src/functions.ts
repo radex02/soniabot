@@ -23,7 +23,7 @@ export const fixMath = (source: string | number): string =>
 
 export const getMessagesOfChannel = async (
   channelId: string,
-  limit: number
+  limit: number | string
 ): Promise<DiscordMessage[]> => {
   return await fetch(
     `https://discord.com/api/v10/channels/${channelId}/messages?limit=${limit}`,
