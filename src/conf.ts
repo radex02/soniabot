@@ -17,6 +17,7 @@ import whenzelda from "./commands/whenzelda";
 import secretjutsu from "./commands/secretjutsu";
 import shouldistudy from "./commands/shouldistudy";
 import whatis from "./commands/whatis";
+import tldr from "./commands/tldr";
 
 export const COMMAND_LIST: Command[] = [
   love,
@@ -37,4 +38,5 @@ export const COMMAND_LIST: Command[] = [
   secretjutsu,
   shouldistudy,
   whatis,
+  tldr,
 ];

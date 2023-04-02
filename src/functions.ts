@@ -1,4 +1,5 @@
 import { decode } from "html-entities";
+import { DiscordMessage } from "./types";
 
 export const shuffle = (source: any[]): any[] =>
   source
@@ -19,3 +20,34 @@ export const fixMath = (source: string | number): string =>
       /(cos|sin|log|ln|tan|acos|asin|atan)([\d.xy]+)/gi,
       (match, op, x) => `${op}(${x})`
     );
+
+export const getMessagesOfChannel = async (
+  channelId: string,
+  limit: number
+): Promise<DiscordMessage[]> => {
+  return await fetch(
+    `https://discord.com/api/v10/channels/${channelId}/messages?limit=${limit}`,
+    {
+      headers: {
+        Authorization: `Bot ${DISCORD_TOKEN}`,
+      },
+    }
+  ).then((res) => res.json());
+};
+
+export const followUpMessageEdit = async (
+  message: Promise<Partial<DiscordMessage>>,
+  interactionToken: string
+) => {
+  await fetch(
+    `https://discord.com/api/v10/webhooks/${DISCORD_APPLICATION_ID}/${interactionToken}/messages/@original`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bot ${DISCORD_TOKEN}`,
+      },
+      body: JSON.stringify(await message),
+    }
+  );
+};
