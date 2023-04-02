@@ -11,7 +11,7 @@ import {
 export default {
   manifest: {
     name: "tldr",
-    description: "[BETA] summarize the last 100 messages",
+    description: "[BETA] summarize the last messages",
     options: [
       {
         type: DiscordCommandOptionType.INTEGER,
@@ -62,10 +62,23 @@ export default {
           content: "*An error occured*",
         };
 
-      const tldr = apiResponse.summary_text.replaceAll(
-        /\d{17,}/g,
-        (id) => `<@${id}>`
-      );
+      const tldr = apiResponse.summary_text
+        .replaceAll(/\d{17,}/g, (id) => `<@${id}>`)
+        .replaceAll(/ (he|him|his|she|her)([ '])/gi, (match, word, sep) => {
+          const isCap = ["H", "S"].includes(word.charAt(0));
+          switch (word.toUpperCase()) {
+            case "HE":
+            case "SHE":
+              return ` ${isCap ? "H" : "h"}e/she${sep}`;
+            case "HIM":
+            case "HER":
+              return ` ${isCap ? "H" : "h"}im/her${sep}`;
+            case "HIS":
+              return ` ${isCap ? "H" : "h"}is/her${sep}`;
+            default:
+              return match;
+          }
+        });
 
       return {
         content: tldr,
