@@ -11,13 +11,12 @@ import {
 export default {
   manifest: {
     name: "tldr",
-    description: "[BETA] summarize the last messages",
+    description: "Summarize the last message(s)",
     options: [
       {
         type: DiscordCommandOptionType.INTEGER,
         name: "amount",
-        description:
-          "Number of messages to summarize, starting from last (default: 10)",
+        description: "Number of messages to summarize (default is 10)",
         min_value: 1,
         max_value: 100,
       },
