@@ -1,5 +1,5 @@
 import type { Command, DiscordMessage } from "../types";
-import { DiscordCommandOptionType } from "../types";
+import { DiscordCommandOptionType, DiscordResponseMessage } from "../types";
 import { InteractionResponseType } from "discord-interactions";
 import { HTTPException } from "hono/http-exception";
 import {
@@ -31,7 +31,7 @@ export default {
 
     const getSummary = async (
       messageList: Promise<DiscordMessage[]>
-    ): Promise<Partial<DiscordMessage>> => {
+    ): Promise<Partial<DiscordResponseMessage>> => {
       const formatedConversation = messageList.then((list) =>
         list
           .map((msg) =>
@@ -81,6 +81,9 @@ export default {
 
       return {
         content: tldr,
+        allowed_mentions: {
+          parse: [],
+        },
       };
     };
 
