@@ -43,7 +43,7 @@ export default {
           .join("\n\n")
       );
 
-      const apiResponse: { summary_text: string } = await fetch(
+      const apiResponse: { summary_text?: string } = await fetch(
         "https://api.nlpcloud.io/v1/bart-large-samsum/summarization",
         {
           method: "POST",
@@ -56,6 +56,11 @@ export default {
           }),
         }
       ).then((res) => res.json());
+
+      if (!apiResponse.summary_text)
+        return {
+          content: "*An error occured*",
+        };
 
       const tldr = apiResponse.summary_text.replaceAll(
         /\d{17,}/g,
