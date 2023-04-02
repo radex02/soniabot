@@ -10,7 +10,9 @@ const quizAnswer: InteractionHandler = async (interaction) => {
     return { type: InteractionResponseType.DEFERRED_UPDATE_MESSAGE };
 
   const newEmbed: DiscordEmbed = Object.assign(interaction.message!.embeds[0], {
-    description: `Solved by <@${interaction.member?.user.id}>`,
+    description: interaction.member
+      ? `Solved by <@${interaction.member.user.id}>`
+      : undefined,
     color: 0x853ae0,
   });
 

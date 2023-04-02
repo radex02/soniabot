@@ -21,10 +21,14 @@ export default {
       (e) => e.name === "victim"
     )!.value;
 
+    const bullyUses = interaction.member
+      ? `<@${interaction.member.user.id}> uses`
+      : "you use";
+
     return {
       type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
       data: {
-        content: `<@${interaction.member?.user.id}> uses secret jutsu on <@${victim}>`,
+        content: `${bullyUses} secret jutsu on <@${victim}>`,
         allowed_mentions: {
           users: [victim],
         },
