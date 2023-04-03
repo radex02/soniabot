@@ -1,7 +1,7 @@
 import type { Command } from "../../types";
 import { DiscordCommandOptionType } from "../../types";
 import { InteractionResponseType } from "discord-interactions";
-import { getOptionValue } from "../../functions";
+import { getOptionValue } from "../../functions/discordApi";
 
 export default {
   manifest: {

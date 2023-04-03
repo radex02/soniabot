@@ -6,7 +6,8 @@ import {
   followUpMessageEdit,
   getMessagesOfChannel,
   getOptionValue,
-} from "../../functions";
+} from "../../functions/discordApi";
+import { makeInclusive, parseUserIds } from "../../functions/text";
 
 export default {
   manifest: {
@@ -61,23 +62,7 @@ export default {
           content: "*An error occured*",
         };
 
-      const tldr = apiResponse.summary_text
-        .replaceAll(/\d{17,}/g, (id) => `<@${id}>`)
-        .replaceAll(/ (he|him|his|she|her)([ '])/gi, (match, word, sep) => {
-          const isCap = ["H", "S"].includes(word.charAt(0));
-          switch (word.toUpperCase()) {
-            case "HE":
-            case "SHE":
-              return ` ${isCap ? "H" : "h"}e/she${sep}`;
-            case "HIM":
-            case "HER":
-              return ` ${isCap ? "H" : "h"}im/her${sep}`;
-            case "HIS":
-              return ` ${isCap ? "H" : "h"}is/her${sep}`;
-            default:
-              return match;
-          }
-        });
+      const tldr = makeInclusive(parseUserIds(apiResponse.summary_text));
 
       return {
         content: tldr,

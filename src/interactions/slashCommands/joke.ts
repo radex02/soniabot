@@ -1,6 +1,6 @@
 import type { Command } from "../../types";
 import { InteractionResponseType } from "discord-interactions";
-import { sanitize } from "../../functions";
+import { sanitize } from "../../functions/text";
 
 export default {
   manifest: {

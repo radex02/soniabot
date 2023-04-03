@@ -1,6 +1,7 @@
 import type { Command } from "../../types";
 import { InteractionResponseType } from "discord-interactions";
-import { pickOne, sanitize, shuffle } from "../../functions";
+import { pickOne, shuffle } from "../../functions/random";
+import { sanitize } from "../../functions/text";
 
 export default {
   manifest: {
