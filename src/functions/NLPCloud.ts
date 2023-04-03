@@ -3,7 +3,7 @@ import { DiscordMessage, DiscordResponseMessage } from "../types";
 export const getSummaryMessage = async (
   messageList: DiscordMessage[]
 ): Promise<Partial<DiscordResponseMessage>> => {
-  const formattedConversation = formatConversation(await messageList);
+  const formattedConversation = formatConversation(messageList);
 
   const summary = await summarizeConversation(formattedConversation);
 
