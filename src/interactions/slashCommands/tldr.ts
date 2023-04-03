@@ -32,7 +32,9 @@ export default {
 
     c.event.waitUntil(
       followUpMessageEdit(
-        getSummaryMessage(getMessagesOfChannel(interaction.channel_id, amount)),
+        getMessagesOfChannel(interaction.channel_id, amount).then(
+          (messageList) => getSummaryMessage(messageList)
+        ),
         interaction.token
       )
     );

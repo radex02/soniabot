@@ -1,7 +1,7 @@
 import { DiscordMessage, DiscordResponseMessage } from "../types";
 
 export const getSummaryMessage = async (
-  messageList: Promise<DiscordMessage[]>
+  messageList: DiscordMessage[]
 ): Promise<Partial<DiscordResponseMessage>> => {
   const formattedConversation = formatConversation(await messageList);
 
