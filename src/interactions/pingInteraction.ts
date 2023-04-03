@@ -1,4 +1,4 @@
-import { InteractionHandler } from "./types";
+import { InteractionHandler } from "../types";
 import { InteractionResponseType } from "discord-interactions";
 
 const pingInteraction: InteractionHandler = async () => {

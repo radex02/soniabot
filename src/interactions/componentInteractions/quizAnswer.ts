@@ -1,4 +1,8 @@
-import { DiscordComponent, DiscordEmbed, InteractionHandler } from "../types";
+import {
+  DiscordComponent,
+  DiscordEmbed,
+  InteractionHandler,
+} from "../../types";
 import { InteractionResponseType } from "discord-interactions";
 
 const quizAnswer: InteractionHandler = async (interaction) => {

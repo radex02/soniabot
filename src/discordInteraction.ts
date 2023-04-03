@@ -2,9 +2,9 @@ import { Context } from "hono";
 import { DiscordInteraction } from "./types";
 import { InteractionType } from "discord-interactions";
 import { HTTPException } from "hono/http-exception";
-import componentInteraction from "./componentInteraction";
-import commandInteraction from "./commandInteraction";
-import pingInteraction from "./pingInteraction";
+import componentInteraction from "./interactions/componentInteraction";
+import commandInteraction from "./interactions/commandInteraction";
+import pingInteraction from "./interactions/pingInteraction";
 
 export const discordInteraction = async (c: Context) => {
   let interaction: DiscordInteraction;

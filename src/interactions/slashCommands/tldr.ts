@@ -1,12 +1,12 @@
-import type { Command, DiscordMessage } from "../types";
-import { DiscordCommandOptionType, DiscordResponseMessage } from "../types";
+import type { Command, DiscordMessage } from "../../types";
+import { DiscordCommandOptionType, DiscordResponseMessage } from "../../types";
 import { InteractionResponseType } from "discord-interactions";
 import { HTTPException } from "hono/http-exception";
 import {
   followUpMessageEdit,
   getMessagesOfChannel,
   getOptionValue,
-} from "../functions";
+} from "../../functions";
 
 export default {
   manifest: {

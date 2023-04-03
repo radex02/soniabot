@@ -1,7 +1,7 @@
-import type { Command } from "../types";
-import { DiscordCommandOptionType } from "../types";
+import type { Command } from "../../types";
+import { DiscordCommandOptionType } from "../../types";
 import { InteractionResponseType } from "discord-interactions";
-import { pickOne } from "../functions";
+import { pickOne } from "../../functions";
 
 export default {
   manifest: {

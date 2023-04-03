@@ -1,6 +1,6 @@
-import { InteractionHandler } from "./types";
+import { InteractionHandler } from "../types";
 import { HTTPException } from "hono/http-exception";
-import quizAnswer from "./components/quizAnswer";
+import quizAnswer from "./componentInteractions/quizAnswer";
 
 const componentInteraction: InteractionHandler = async (interaction, c) => {
   if (!interaction.data) throw new HTTPException(400);

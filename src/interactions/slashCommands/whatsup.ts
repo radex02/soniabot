@@ -1,17 +1,17 @@
-import type { Command } from "../types";
+import type { Command } from "../../types";
 import { InteractionResponseType } from "discord-interactions";
 
 export default {
   manifest: {
-    name: "love",
-    description: "Love",
+    name: "whatsup",
+    description: "What's up?",
   },
 
   execute: async (interaction, c) => {
     return {
       type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
       data: {
-        content: "<$",
+        content: "The ceiling",
       },
     };
   },

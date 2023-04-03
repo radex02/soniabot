@@ -1,5 +1,5 @@
-import { InteractionHandler } from "./types";
-import { COMMAND_LIST } from "./conf";
+import { InteractionHandler } from "../types";
+import { COMMAND_LIST } from "../conf";
 import { HTTPException } from "hono/http-exception";
 
 const commandInteraction: InteractionHandler = async (interaction, c) => {
