@@ -6,7 +6,7 @@ import componentInteraction from "./interactions/componentInteraction";
 import commandInteraction from "./interactions/commandInteraction";
 import pingInteraction from "./interactions/pingInteraction";
 
-export const discordInteraction = async (c: Context) => {
+export const interactionEntrypoint = async (c: Context) => {
   let interaction: DiscordInteraction;
 
   try {
