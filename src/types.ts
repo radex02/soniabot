@@ -54,7 +54,14 @@ export interface DiscordInteractionData {
   name: string;
   type: DiscordCommandType;
   options?: DiscordCommandOptionsResponse[];
+  resolved?: DiscordResolvedData;
 }
+
+export interface DiscordResolvedData {
+  messages?: DiscordResolvedMessages;
+}
+
+export type DiscordResolvedMessages = { [messageId: string]: DiscordMessage };
 
 export interface DiscordCommandOptionsResponse {
   name: string;

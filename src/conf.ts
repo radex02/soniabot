@@ -18,6 +18,7 @@ import secretjutsu from "./interactions/slashCommands/secretjutsu";
 import shouldistudy from "./interactions/slashCommands/shouldistudy";
 import whatis from "./interactions/slashCommands/whatis";
 import tldr from "./interactions/slashCommands/tldr";
+import msgtldr from "./interactions/messageCommands/msgtldr";
 
 export const COMMAND_LIST: Command[] = [
   love,
@@ -39,4 +40,5 @@ export const COMMAND_LIST: Command[] = [
   shouldistudy,
   whatis,
   tldr,
+  msgtldr,
 ];
