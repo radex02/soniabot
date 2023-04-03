@@ -1,11 +1,14 @@
 import { DiscordMessage, DiscordResponseMessage } from "../types";
+import { makeInclusive, parseUserIds } from "./text";
 
 export const getSummaryMessage = async (
   messageList: DiscordMessage[]
 ): Promise<Partial<DiscordResponseMessage>> => {
   const formattedConversation = formatConversation(messageList);
 
-  const summary = await summarizeConversation(formattedConversation);
+  const summary = makeInclusive(
+    parseUserIds(await summarizeConversation(formattedConversation))
+  );
 
   return {
     content: summary,
